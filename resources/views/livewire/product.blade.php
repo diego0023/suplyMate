@@ -6,4 +6,5 @@
             Submit
         </button>
     </form>
+    {{ $this->modal }}
 </div>

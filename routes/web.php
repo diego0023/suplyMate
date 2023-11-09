@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Livewire\Product;
+use App\Http\Livewire\ProductForm;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/product', Product::class)->name('product');
+Route::get('/product', ProductForm::class)->name('product');
 
 
 Route::get('/', function () {
