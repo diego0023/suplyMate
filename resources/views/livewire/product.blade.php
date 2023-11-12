@@ -3,7 +3,7 @@
         {{ $this->form }}
 
         <button type="submit">
-            Submit
+            Crear
         </button>
     </form>
     {{ $this->modal }}

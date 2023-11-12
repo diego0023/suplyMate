@@ -2,8 +2,9 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Supplier;
 use App\Models\Product;
+use App\Models\ProductDependencies;
+use App\Models\Supplier;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Repeater;
@@ -12,6 +13,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Redirect;
 use Livewire\Component;
 
 class ProductForm extends Component implements Forms\Contracts\HasForms
@@ -19,6 +21,13 @@ class ProductForm extends Component implements Forms\Contracts\HasForms
     use Forms\Concerns\InteractsWithForms;
 
     public $id_supplier;
+    public $name;
+    public $stock_inventory;
+    public $supply_time;
+    public $security_stock;
+    public $lot_quantity;
+    public $supplier;
+    public $dependencies = array();
 
     protected function getFormSchema(): array
     {
@@ -35,7 +44,7 @@ class ProductForm extends Component implements Forms\Contracts\HasForms
                 TextInput::make('supply_time')
                     ->required()
                     ->numeric()
-                    ->label('Tiempo de suministro (TS)'),
+                    ->label('Tiempo de suministro en semanas (TS)'),
                 TextInput::make('security_stock')
                     ->required()
                     ->numeric()
@@ -79,15 +88,34 @@ class ProductForm extends Component implements Forms\Contracts\HasForms
                                 ->label('Cantidad')
                                 ->numeric(),
                         ])
+                        ->createItemButtonLabel('Agregar Dependencia')
                         ->defaultItems(1),
              ]),
 
         ];
     }
 
-    public function submit(): void
+    public function submit()
     {
         $data = $this->form->getState();
+        $record = Product::create([
+            'name'            => $data['name'],
+            'supplier_id'     => $data['id_supplier'],
+            'stock_inventory' => $data['stock_inventory'],
+            'supply_time'     => $data['supply_time'],
+            'security_stock'  => $data['security_stock'],
+            'lot_quantity'    => $data['lot_quantity'],
+        ]);
+
+        foreach ($data['dependencies'] as $dependencie) {
+            ProductDependencies::create([
+                'father_id' => $record->id,
+                'product_id' => $dependencie['id_product'],
+                'quantity' => $dependencie['quantity'],
+            ]);
+        }
+
+        return Redirect::to('product');
     }
     public function render()
     {
