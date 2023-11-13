@@ -24,7 +24,7 @@ class ProductTree extends Component implements Forms\Contracts\HasForms
             Select::make('product_id')
                 ->label('Producto para desplegar el árbol de dependencias')
                 ->options(Product::all()->pluck('name', 'id'))
-                ->searchable()
+                ->searchable(),
         ];
     }
 

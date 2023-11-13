@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\BOM;
 use App\Http\Livewire\ProductForm;
 use App\Http\Livewire\ProductTree;
 use Illuminate\Support\Facades\Route;
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/product', ProductForm::class)->name('product');
 Route::get('/tree', ProductTree::class)->name('productTree');
+Route::get('/bom', BOM::class)->name('productTree');
 
 
 Route::get('/', function () {
