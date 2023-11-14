@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/product', ProductForm::class)->name('product');
 Route::get('/tree', ProductTree::class)->name('productTree');
-Route::get('/bom', BOM::class)->name('productTree');
+Route::get('/bom', BOM::class)->name('productBom');
 
 
 Route::get('/', function () {
