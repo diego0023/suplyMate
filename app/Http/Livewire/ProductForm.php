@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Product;
 use App\Models\ProductDependencies;
 use App\Models\Supplier;
+use Maatwebsite\Excel\Facades\Excel;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Repeater;
@@ -120,5 +121,22 @@ class ProductForm extends Component implements Forms\Contracts\HasForms
     public function render()
     {
         return view('livewire.product');
+    }
+
+    public function generatePdf()
+    {
+
+        return Excel::download(new Product, 'products.xlsx');
+    }
+
+    public function generatePdf2()
+    {
+        return Excel::download(new ProductDependencies, 'Dependencias.xlsx');
+    }
+
+    public function generatePdf3()
+    {
+
+        return Excel::download(new Supplier, 'Supplier.xlsx');
     }
 }

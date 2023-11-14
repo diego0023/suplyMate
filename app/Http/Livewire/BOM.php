@@ -4,12 +4,16 @@ namespace App\Http\Livewire;
 
 use App\Models\Product;
 use App\Models\ProductDependencies;
+use App\Models\Supplier;
+
 use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
@@ -195,6 +199,11 @@ class BOM extends Component implements Forms\Contracts\HasForms
 
         return $weeks;
     }
+
+
+
+
+
 
     public function render()
     {
