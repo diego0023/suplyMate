@@ -4,13 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/heroicons@1.0.3/dist/styles.css">
-
-
   @vite('resources/css/app.css')
 </head>
 <body >
   <div class="h-screen bg-[#F5F5F5] w-full overflow-hidden grid grid-cols-1 place-content-start gap-2">
-    <div class="w-full text-center text-[#3FC1C9] p-4 text-4xl font-bold border-b-2 border-[#364F6B] ">
+    <div class="w-full text-center text-[#FC5185] p-4 text-5xl  border-b border-[#364F6B] font-extrabold">
         <p class="">Supply Mate</p>
     </div>
     <a href="{{ route('product') }}"  class="w-full text-start grid grid-cols-2 justify-items-start text-gray-600 transition duration-300 ease-in-out hover:text-[#FC5185] text-xl hover:bg-gray-300 rounded-full p-2">
