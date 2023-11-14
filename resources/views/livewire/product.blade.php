@@ -16,6 +16,20 @@
             {{ $this->modal }}
         </div>
 
+
+    <button type="submit"  wire:click="generatePdf" class="w-full mt-4 bg-[#364F6B] text-white rounded-full py-2 px-4 hover:bg-[#3FC1C9]">
+        PDF Productos
+    </button>
+
+    <button type="submit"  wire:click="generatePdf2" class="w-full mt-4 bg-[#364F6B] text-white rounded-full py-2 px-4 hover:bg-[#3FC1C9]">
+        PDF2 Dependencias de productos
+    </button>
+
+    <button type="submit"  wire:click="generatePdf3" class="w-full mt-4 bg-[#364F6B] text-white rounded-full py-2 px-4 hover:bg-[#3FC1C9]">
+        PDF3 Proveedores
+    </button>
     </div>
+
+
 
 </div>
